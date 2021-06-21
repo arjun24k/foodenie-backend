@@ -24,19 +24,19 @@ const recommender = new ContentBasedRecommender({
 const db = firebase.firestore()
 const ml = admin.machineLearning()
 
-const food_documents=await db.collection("food_items").orderBy('food_ID').limit(1000).get()
+const food_documents = await db.collection("food_items").orderBy('food_ID').limit(1000).get()
 
 
 const app = express();
-app.get("/test", (req, res)=>{
+app.get("/test", (req, res) => {
   res.send("boom");
 });
 
-app.get("/reccommend",async (req,res)=>{
+app.get("/reccommend", async (req, res) => {
   try {
-    
+
   } catch (error) {
-    
+
   }
 })
 
