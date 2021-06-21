@@ -8,21 +8,28 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test":"node index.js"
   },
   "engines": {
     "node": "14"
   },
   "main": "index.js",
   "dependencies": {
-    "firebase": "^8.6.5",
-    "firebase-admin": "^9.9.0",
-    "firebase-functions": "^3.14.1"
+    "babel-eslint": "^10.1.0",
+    "content-based-recommender": "^1.5.0",
+    "firebase": "^7.6.1",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.2.0"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",
     "firebase-functions-test": "^0.2.0"
+  },
+  "resolutions": {
+    "@grpc/grpc-js": "0.6.18",
+    "google-gax": "1.6.2"
   },
   "private": true
 }
