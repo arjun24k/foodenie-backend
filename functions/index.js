@@ -33,29 +33,17 @@ app.get("/trending", async (req, res) => {
 
 
 app.put("/food_eaten/:food_id", async (req, res) => {
+
   const food_id = req.params.food_id;
+  var item = db.collection("food_items").doc(food_id);
 
+  item.update({
+    rank: firebase.firestore.FieldValue.increment(10)
+  });
 
-  // const item = await db.collection("food_items").doc(food_id).get();
-  const food = await db.collection("food_items").where('food_ID', '==', parseInt(food_id)).get();
-
-  const food_data = food.docs.map(res => res.data())
-
-  //TODO: 
-  return res.json(food.docs.id);
-
-  const updated = await db.collection("food_items")
-    .doc(food.id)
-    .update({
-      rank: 20
-    });
-
-  return res.json(updated);
-  // return res.json(max_rank[0]);
-  //   db.collection("users").doc("frank").update({
-  //     "age": 13,
-  //     "favorites.color": "Red"
-  // });
+  return res.status(200).json({
+    message: "rank has been updated"
+  });
 })
 
 
@@ -98,18 +86,9 @@ app.get("/recommend", async (req, res) => {
 
 
 
-app.listen(8000, () => {
-  console.log("server is listening to 8000 port");
-
-  // category "Indian Chinese s"
-  // course "Main Course"
-  // cuisine "Indo Chinese"
-  // diet "Vegetarian"
-  // food_ID 1200
-  // rank 2
-  // recipe_title "Spicy Schezwan Vegetable Noodles "
-  // tags "Party Food s|Indian Lunch s|Office Lunch Box s|Bachelor s|Noodle s" 
-})
+// app.listen(8000, () => {
+//   console.log("server is listening to 8000 port");
+// })
 
 exports.app = functions.https.onRequest(app);
 /*
